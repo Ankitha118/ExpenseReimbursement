@@ -1,0 +1,53 @@
+---
+Help: login to expense by using variable 1st method
+Test
+---
+!*** Definition 
+!define Request1 {Ankitha}
+!define Category {Appian World}
+!define Currency {INR}
+!define Date1 {02/11/2022}
+!define Expense {Fuel}
+!define Payment {Travel Card}
+!define Expensec {INR}
+!define Conversion {100}
+!define Amount {200.009}
+!define Notes {Travel through the world}
+***!
+
+
+!*** Initialization and Login to Tempo
+!|script|com.appiancorp.ps.automatedtest.fixture.TempoFixture|
+|setup with|CHROME|browser|
+|set appian url to|https://vuramsolutionsdev.appiancloud.com/suite/sites/vuram-hub-v2/page/home?signin=native|
+|set appian version to|21.4|
+|set appian locale to|en_US|
+|login with username|vuramitej@vuram.com|and password|test1234|
+***!
+
+!*** Click on all the tabs
+|script|
+|click on link|Expense|
+|click on link|Submit Expense Reimbursement|
+|populate field|Request Name|with value|${Request1}|
+|populate field|Expense Category|with value|${Category}|
+|populate field|Reimbursement Currency|with value|${Currency}|
+|populate field|Date|with value|${Date1}|
+|populate field|Expense Type|with value|${Expense}|
+|populate field|Payment Mode|with value|${Payment}|
+|populate field|Expense Currency|with value|${Expensec}|
+|populate field|Conversion Rate|with value|${Conversion}|
+|populate field|Expense Amount|with value|${Amount}|
+|populate field|Expense Notes|with value|${Notes}|
+|click on link|Duplicate|
+|click on link|Remove|
+|click on link|Add an Item|
+|populate field|Date[2]|with value|${Date1}|
+|populate field|Expense Type[2]|with value|${Expense}|
+|populate field|Payment Mode[2]|with value|${Payment}|
+|populate field|Expense Currency[2]|with value|${Expensec}|
+|populate field|Conversion Rate[2]|with value|${Conversion}|
+|populate field|Expense Amount[2]|with value|${Amount}|
+|populate field|Expense Notes[2]|with value|${Notes}|
+|click on button|Save and Exit|
+***!
